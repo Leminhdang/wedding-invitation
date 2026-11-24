@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Andy &amp; Emma · Thiệp Cưới 28.12.2026</title>
+  <meta name="description" content="Trân trọng kính mời quý khách tham dự lễ thành hôn của Andy & Emma vào ngày 28.12.2026.">
+  <meta name="theme-color" content="#faf7f2">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Andy & Emma · Thiệp Cưới">
+  <meta property="og:description" content="Trân trọng kính mời quý khách tham dự lễ cưới của chúng mình!">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+
+  <!-- Fonts (đều hỗ trợ tiếng Việt) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>document.documentElement.classList.add("js");</script>
+  <noscript><style>.gate { display: none; } body.is-locked { overflow: auto; }</style></noscript>
+</head>
+<body class="is-locked">
+
+  <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+
+  <!-- ======================================================================
+       1. GATE — màn hình mở thiệp
+       ====================================================================== -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <div class="gate__bg" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80" alt="" fetchpriority="high">
+    </div>
+    <div class="gate__content">
+      <p class="eyebrow eyebrow--light" data-i18n="gate.badge">Thư mời cưới</p>
+      <h1 class="gate__names script" id="gateTitle">Andy <span class="amp">&amp;</span> Emma</h1>
+      <p class="gate__date" data-i18n="gate.date">28 · 12 · 2026</p>
+
+      <div class="gate__guest">
+        <span data-i18n="gate.for">Trân trọng kính mời</span>
+        <strong id="guestName" data-i18n="gate.defaultGuest">Quý khách &amp; người thương</strong>
+      </div>
+
+      <button type="button" class="btn btn--glass btn--lg" id="openInvitation">
+        <i class="bi bi-envelope-heart" aria-hidden="true"></i>
+        <span data-i18n="gate.btn">Mở thiệp</span>
+      </button>
+      <p class="gate__hint">
+        <i class="bi bi-music-note-beamed" aria-hidden="true"></i>
+        <span data-i18n="gate.hint">Bật âm thanh để nghe nhạc nền</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       2. HEADER — logo, menu, nhạc nền, ngôn ngữ
+       ====================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <a class="brand script" href="#hero" aria-label="Andy &amp; Emma">A<span>&amp;</span>E</a>
+
+    <nav class="site-nav" aria-label="Menu">
+      <a href="#couple" data-nav data-i18n="nav.couple">Cặp đôi</a>
+      <a href="#countdown" data-nav data-i18n="nav.date">Ngày cưới</a>
+      <a href="#events" data-nav data-i18n="nav.events">Sự kiện</a>
+      <a href="#story" data-nav data-i18n="nav.story">Chuyện tình</a>
+      <a href="#gallery" data-nav data-i18n="nav.gallery">Album</a>
+      <a href="#rsvp" data-nav data-i18n="nav.rsvp">Xác nhận</a>
+      <a href="#gift" data-nav data-i18n="nav.gift">Mừng cưới</a>
+    </nav>
+
+    <div class="controls">
+      <button type="button" class="music-btn" id="musicBtn" aria-pressed="false" data-i18n-aria="music.play" aria-label="Phát nhạc nền">
+        <i class="bi bi-play-fill music-btn__icon" aria-hidden="true"></i>
+        <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="music-btn__label" id="musicLabel">
+          <b>I Do</b><span>911</span>
+        </span>
+      </button>
+      <button type="button" class="lang-btn" id="langBtn" data-i18n-aria="lang.switch" aria-label="Chuyển ngôn ngữ">
+        <span data-lang="vi">VI</span>
+        <span data-lang="en">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ====================================================================
+         3. HERO
+         ==================================================================== -->
+    <section class="hero" id="hero">
+      <div class="hero__media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80" alt="">
+      </div>
+      <div class="hero__content">
+        <p class="eyebrow eyebrow--light" data-i18n="hero.theWeddingOf">The Wedding Of</p>
+        <h2 class="hero__names script">Andy <span class="amp">&amp;</span> Emma</h2>
+        <p class="hero__date" data-i18n="hero.date">Thứ Hai · 28.12.2026</p>
+      </div>
+      <a class="hero__scroll" href="#intro" data-i18n-aria="hero.scroll" aria-label="Cuộn xuống"><span></span></a>
+    </section>
+
+    <!-- ====================================================================
+         4. INTRO QUOTE
+         ==================================================================== -->
+    <section class="intro" id="intro">
+      <div class="container container--narrow reveal">
+        <div class="monogram script" aria-hidden="true">A<span>&amp;</span>E</div>
+        <blockquote class="intro__quote" data-i18n="intro.quote">“Tình yêu không phải là nhìn nhau, mà là cùng nhau nhìn về một hướng.”</blockquote>
+        <p class="intro__cite">Antoine de Saint-Exupéry</p>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5. COUPLE
+         ==================================================================== -->
+    <section class="section" id="couple">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="couple.sub">Cô dâu &amp; Chú rể</p>
+          <h2 class="section-title" data-i18n="couple.title">Cặp đôi hạnh phúc</h2>
+          <p class="section-lead" data-i18n="couple.desc">Hạnh phúc lớn nhất của đời người là tìm thấy một nửa luôn đồng hành và thấu hiểu.</p>
+        </header>
+
+        <div class="couple">
+          <article class="person reveal">
+            <div class="person__photo">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Chú rể Andy" loading="lazy">
+            </div>
+            <p class="person__role" data-i18n="couple.groomRole">Chú rể</p>
+            <h3 class="person__name">Andy</h3>
+            <p class="person__family" data-i18n-html="couple.groomFamily">Trưởng nam của<br>Ông Nguyễn Văn An &amp; Bà Lê Thị Lan</p>
+            <p class="person__quote" data-i18n="couple.groomQuote">“Gặp được em là điều may mắn nhất, yêu em là quyết định đúng đắn nhất đời anh.”</p>
+            <div class="person__social">
+              <a href="#couple" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#couple" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#couple" aria-label="Phone"><i class="bi bi-telephone"></i></a>
+            </div>
+          </article>
+
+          <div class="couple__amp script" aria-hidden="true">&amp;</div>
+
+          <article class="person reveal" style="--delay:.15s">
+            <div class="person__photo">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Cô dâu Emma" loading="lazy">
+            </div>
+            <p class="person__role" data-i18n="couple.brideRole">Cô dâu</p>
+            <h3 class="person__name">Emma</h3>
+            <p class="person__family" data-i18n-html="couple.brideFamily">Ái nữ của<br>Ông Trần Đình Trọng &amp; Bà Hoàng Thu Hà</p>
+            <p class="person__quote" data-i18n="couple.brideQuote">“Cảm ơn anh đã luôn ở bên, bao dung và nắm chặt tay em qua mọi thăng trầm.”</p>
+            <div class="person__social">
+              <a href="#couple" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#couple" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#couple" aria-label="Phone"><i class="bi bi-telephone"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         6. SAVE THE DATE — lịch + đếm ngược
+         ==================================================================== -->
+    <section class="section section--dark" id="countdown">
+      <div class="container save-date">
+        <div class="save-date__main reveal">
+          <p class="eyebrow eyebrow--gold" data-i18n="countdown.sub">Save the date</p>
+          <h2 class="section-title" data-i18n="countdown.title">Đếm ngược ngày chung đôi</h2>
+          <p class="section-lead" data-i18n="countdown.desc">Thời gian đang đếm ngược đến khoảnh khắc trọng đại nhất của chúng mình.</p>
+
+          <div class="countdown" id="countdownTimer" role="timer">
+            <div class="countdown__unit"><span class="countdown__num" data-unit="days">00</span><span class="countdown__label" data-i18n="countdown.days">Ngày</span></div>
+            <div class="countdown__unit"><span class="countdown__num" data-unit="hours">00</span><span class="countdown__label" data-i18n="countdown.hours">Giờ</span></div>
+            <div class="countdown__unit"><span class="countdown__num" data-unit="minutes">00</span><span class="countdown__label" data-i18n="countdown.minutes">Phút</span></div>
+            <div class="countdown__unit"><span class="countdown__num" data-unit="seconds">00</span><span class="countdown__label" data-i18n="countdown.seconds">Giây</span></div>
+          </div>
+          <p class="countdown__done" id="countdownDone" hidden data-i18n="countdown.done">Hôm nay là ngày chung đôi của chúng mình!</p>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn--light" data-action="google-calendar">
+              <i class="bi bi-google" aria-hidden="true"></i><span data-i18n="countdown.google">Thêm vào Google Calendar</span>
+            </button>
+            <button type="button" class="btn btn--ghost-light" data-action="ics">
+              <i class="bi bi-calendar-heart" aria-hidden="true"></i><span data-i18n="countdown.ics">Tải lịch Apple / iCal</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="calendar reveal" id="calendar" style="--delay:.15s"></div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         7. EVENTS
+         ==================================================================== -->
+    <section class="section" id="events">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="events.sub">Chương trình</p>
+          <h2 class="section-title" data-i18n="events.title">Thời gian &amp; Địa điểm</h2>
+          <p class="section-lead" data-i18n="events.desc">Sự hiện diện của quý khách là niềm vinh hạnh lớn nhất cho gia đình chúng tôi.</p>
+        </header>
+
+        <div class="events">
+          <article class="event-card reveal">
+            <div class="event-card__media">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="" loading="lazy">
+              <span class="tag" data-i18n="events.ceremonyBadge">Lễ thành hôn</span>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title" data-i18n="events.ceremonyTitle">Lễ Vu Quy &amp; Thành Hôn</h3>
+              <ul class="meta-list">
+                <li>
+                  <i class="bi bi-clock" aria-hidden="true"></i>
+                  <div><strong data-i18n="events.ceremonyTime">09:00 · Thứ Hai, 28.12.2026</strong><span data-i18n="events.ceremonyNote">Lễ rước dâu &amp; lễ gia tiên</span></div>
+                </li>
+                <li>
+                  <i class="bi bi-house-heart" aria-hidden="true"></i>
+                  <div><strong data-i18n="events.ceremonyLocation">Tư gia nhà trai</strong><span data-i18n="events.ceremonyAddress">123 Đường Hoa Hồng, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh</span></div>
+                </li>
+              </ul>
+              <a class="btn btn--outline" href="https://www.google.com/maps/search/?api=1&amp;query=123+Rose+Street+Ben+Nghe+District+1+Ho+Chi+Minh" target="_blank" rel="noopener">
+                <i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="events.map">Chỉ đường</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="event-card reveal" style="--delay:.15s">
+            <div class="event-card__media">
+              <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=80" alt="" loading="lazy">
+              <span class="tag" data-i18n="events.receptionBadge">Tiệc cưới</span>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title" data-i18n="events.receptionTitle">Tiệc mừng hôn lễ</h3>
+              <ul class="meta-list">
+                <li>
+                  <i class="bi bi-clock" aria-hidden="true"></i>
+                  <div><strong data-i18n="events.receptionTime">18:00 · Thứ Hai, 28.12.2026</strong><span data-i18n="events.receptionNote">Đón khách từ 17:30 · Khai tiệc &amp; chương trình âm nhạc</span></div>
+                </li>
+                <li>
+                  <i class="bi bi-buildings" aria-hidden="true"></i>
+                  <div><strong data-i18n="events.receptionLocation">Gem Center · Sảnh Castor (Tầng 3)</strong><span data-i18n="events.receptionAddress">Số 8 Nguyễn Bỉnh Khiêm, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh</span></div>
+                </li>
+              </ul>
+              <a class="btn btn--outline" href="https://www.google.com/maps/search/?api=1&amp;query=Gem+Center+8+Nguyen+Binh+Khiem+Da+Kao+District+1" target="_blank" rel="noopener">
+                <i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="events.map">Chỉ đường</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         8. LOVE STORY
+         ==================================================================== -->
+    <section class="section section--alt" id="story">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="story.sub">Hành trình yêu</p>
+          <h2 class="section-title" data-i18n="story.title">Câu chuyện tình yêu</h2>
+          <p class="section-lead" data-i18n="story.desc">Từ cái nhìn đầu tiên đến lời hứa trọn đời bên nhau.</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <div class="timeline__media"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy"></div>
+            <div class="timeline__body">
+              <span class="timeline__date" data-i18n="story.m1Date">Tháng 03 · 2021</span>
+              <h3 class="timeline__title" data-i18n="story.m1Title">Lần đầu gặp gỡ</h3>
+              <p class="timeline__desc" data-i18n="story.m1Desc">Một buổi chiều mưa bất chợt tại quán cà phê quen thuộc ở Sài Gòn, ánh mắt vô tình chạm nhau...</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__media"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy"></div>
+            <div class="timeline__body">
+              <span class="timeline__date" data-i18n="story.m2Date">Tháng 10 · 2022</span>
+              <h3 class="timeline__title" data-i18n="story.m2Title">Hẹn hò đầu tiên</h3>
+              <p class="timeline__desc" data-i18n="story.m2Desc">Chuyến đi dạo bờ sông ngắm pháo hoa và cái nắm tay e ấp đầu tiên thay lời muốn nói.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__media"><img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy"></div>
+            <div class="timeline__body">
+              <span class="timeline__date" data-i18n="story.m3Date">Tháng 12 · 2025</span>
+              <h3 class="timeline__title" data-i18n="story.m3Title">Lời cầu hôn</h3>
+              <p class="timeline__desc" data-i18n="story.m3Desc">Dưới ánh hoàng hôn trên đồi thông Đà Lạt, anh quỳ xuống và em nói: “Em đồng ý!”.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__media"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy"></div>
+            <div class="timeline__body">
+              <span class="timeline__date" data-i18n="story.m4Date">Tháng 12 · 2026</span>
+              <h3 class="timeline__title" data-i18n="story.m4Title">Về chung một nhà</h3>
+              <p class="timeline__desc" data-i18n="story.m4Desc">Trước sự chứng kiến của người thân và bạn bè, chúng mình chính thức nên duyên vợ chồng.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         9. GALLERY
+         ==================================================================== -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="gallery.sub">Khoảnh khắc đẹp</p>
+          <h2 class="section-title" data-i18n="gallery.title">Album ảnh cưới</h2>
+          <p class="section-lead" data-i18n="gallery.desc">Lưu giữ những nụ cười, ánh mắt và khoảnh khắc ngọt ngào nhất.</p>
+        </header>
+
+        <div class="chips reveal" role="group" data-i18n-aria="gallery.filter" aria-label="Lọc ảnh">
+          <button type="button" class="chip is-active" data-filter="all" aria-pressed="true" data-i18n="gallery.all">Tất cả</button>
+          <button type="button" class="chip" data-filter="studio" aria-pressed="false" data-i18n="gallery.studio">Studio</button>
+          <button type="button" class="chip" data-filter="outdoor" aria-pressed="false" data-i18n="gallery.outdoor">Ngoại cảnh</button>
+          <button type="button" class="chip" data-filter="moment" aria-pressed="false" data-i18n="gallery.moment">Khoảnh khắc</button>
+        </div>
+
+        <!-- Thêm ảnh: copy 1 khối <figure>, đổi data-category, src (ảnh nhỏ) và data-full (ảnh lớn).
+             Lưới 4 cột (desktop) / 2 cột (mobile): ảnh "is-tall" chiếm 2 ô — giữ tổng số ô chia hết cho 4 để không bị hở. -->
+        <div class="gallery" id="galleryGrid">
+          <figure class="gallery__item is-tall" data-category="studio">
+            <button type="button" class="gallery__btn" data-full="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Sweetest Promise" loading="lazy">
+              <figcaption>Sweetest Promise</figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-category="outdoor">
+            <button type="button" class="gallery__btn" data-full="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1600&q=80">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Forever In Nature" loading="lazy">
+              <figcaption>Forever In Nature</figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-category="moment">
+            <button type="button" class="gallery__btn" data-full="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=80">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Ring Exchange" loading="lazy">
+              <figcaption>Ring Exchange</figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item is-tall" data-category="outdoor">
+            <button type="button" class="gallery__btn" data-full="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80">
+              <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80" alt="Sunlit Sunset Walk" loading="lazy">
+              <figcaption>Sunlit Sunset Walk</figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-category="studio">
+            <button type="button" class="gallery__btn" data-full="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1600&q=80">
+              <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=800&q=80" alt="Gentle Gaze" loading="lazy">
+              <figcaption>Gentle Gaze</figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-category="moment">
+            <button type="button" class="gallery__btn" data-full="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=80">
+              <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Pure Joy &amp; Laughter" loading="lazy">
+              <figcaption>Pure Joy &amp; Laughter</figcaption>
+            </button>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         10. RSVP & GUESTBOOK
+         ==================================================================== -->
+    <section class="section section--alt" id="rsvp">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="rsvp.sub">Tham dự cùng chúng mình</p>
+          <h2 class="section-title" data-i18n="rsvp.title">Xác nhận tham dự</h2>
+          <p class="section-lead" data-i18n="rsvp.desc">Vui lòng phản hồi trước ngày 20.12.2026 để chúng mình đón tiếp chu đáo nhất.</p>
+        </header>
+
+        <div class="rsvp">
+          <form class="card rsvp-form reveal" id="rsvpForm">
+            <div class="field">
+              <label for="rsvpName" data-i18n="rsvp.nameLabel">Họ và tên</label>
+              <input class="input" id="rsvpName" name="name" type="text" required maxlength="80" autocomplete="name" data-i18n-ph="rsvp.namePlaceholder" placeholder="Nhập họ tên của bạn">
+            </div>
+
+            <div class="field">
+              <label for="rsvpPhone" data-i18n="rsvp.phoneLabel">Số điện thoại</label>
+              <input class="input" id="rsvpPhone" name="phone" type="tel" maxlength="20" inputmode="tel" autocomplete="tel" data-i18n-ph="rsvp.phonePlaceholder" placeholder="Không bắt buộc">
+            </div>
+
+            <fieldset class="field">
+              <legend data-i18n="rsvp.statusLabel">Bạn sẽ đến chứ?</legend>
+              <div class="segmented">
+                <label><input type="radio" name="status" value="will_attend" checked><span data-i18n="rsvp.statusYes">Sẽ tham dự</span></label>
+                <label><input type="radio" name="status" value="cannot_attend"><span data-i18n="rsvp.statusNo">Không thể đến</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field-row">
+              <fieldset class="field">
+                <legend data-i18n="rsvp.sideLabel">Bạn là khách của</legend>
+                <div class="segmented">
+                  <label><input type="radio" name="side" value="groom"><span data-i18n="rsvp.sideGroom">Nhà trai</span></label>
+                  <label><input type="radio" name="side" value="bride"><span data-i18n="rsvp.sideBride">Nhà gái</span></label>
+                  <label><input type="radio" name="side" value="both" checked><span data-i18n="rsvp.sideBoth">Cả hai</span></label>
+                </div>
+              </fieldset>
+
+              <div class="field" id="countField">
+                <label for="rsvpCount" data-i18n="rsvp.countLabel">Số người tham dự</label>
+                <div class="stepper">
+                  <button type="button" data-step="-1" data-i18n-aria="rsvp.decrease" aria-label="Giảm"><i class="bi bi-dash-lg"></i></button>
+                  <input id="rsvpCount" name="count" type="number" min="1" max="10" value="2" inputmode="numeric">
+                  <button type="button" data-step="1" data-i18n-aria="rsvp.increase" aria-label="Tăng"><i class="bi bi-plus-lg"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="rsvpWish" data-i18n="rsvp.wishLabel">Lời chúc gửi cô dâu chú rể</label>
+              <textarea class="input" id="rsvpWish" name="message" rows="4" maxlength="500" data-i18n-ph="rsvp.wishPlaceholder" placeholder="Gửi gắm lời chúc ngọt ngào nhất..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block btn--lg" id="rsvpSubmit">
+              <i class="bi bi-send" aria-hidden="true"></i><span data-i18n="rsvp.submit">Gửi xác nhận</span>
+            </button>
+          </form>
+
+          <div class="card wishes reveal" style="--delay:.15s">
+            <div class="wishes__head">
+              <h3 data-i18n="wishes.title">Sổ lưu bút</h3>
+              <span class="pill" id="wishCount" hidden>0</span>
+            </div>
+            <p class="wishes__desc" data-i18n="wishes.desc">Những lời chúc ý nghĩa từ gia đình và bạn bè thân thương.</p>
+            <ul class="wishes__list" id="wishesList" aria-live="polite"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         11. GIFT
+         ==================================================================== -->
+    <section class="section" id="gift">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="gift.sub">Mừng cưới</p>
+          <h2 class="section-title" data-i18n="gift.title">Hộp mừng cưới</h2>
+          <p class="section-lead" data-i18n="gift.desc">Sự hiện diện của bạn là món quà quý giá nhất. Nếu muốn gửi lời chúc mừng từ xa, bạn có thể gửi qua thông tin dưới đây.</p>
+        </header>
+
+        <div class="gifts">
+          <article class="gift-card reveal">
+            <p class="eyebrow" data-i18n="gift.groomTitle">Mừng cưới chú rể</p>
+            <div class="gift-card__qr"><img src="assets/groom-qr.png" alt="QR mừng cưới chú rể" loading="lazy"></div>
+            <dl class="gift-card__info">
+              <div><dt data-i18n="gift.bank">Ngân hàng</dt><dd>TPBank</dd></div>
+              <div><dt data-i18n="gift.accNum">Số tài khoản</dt><dd class="acc">0593 8412 901</dd></div>
+              <div><dt data-i18n="gift.accName">Chủ tài khoản</dt><dd>LE MINH DANG</dd></div>
+            </dl>
+            <button type="button" class="btn btn--outline btn--block" data-copy="05938412901">
+              <i class="bi bi-copy" aria-hidden="true"></i><span data-i18n="gift.copy">Sao chép số tài khoản</span>
+            </button>
+          </article>
+
+          <article class="gift-card reveal" style="--delay:.15s">
+            <p class="eyebrow" data-i18n="gift.brideTitle">Mừng cưới cô dâu</p>
+            <div class="gift-card__qr"><img src="https://img.vietqr.io/image/970407-19036789123015-qr_only.png?accountName=EMMA%20TRAN" alt="QR mừng cưới cô dâu" loading="lazy"></div>
+            <dl class="gift-card__info">
+              <div><dt data-i18n="gift.bank">Ngân hàng</dt><dd>Techcombank</dd></div>
+              <div><dt data-i18n="gift.accNum">Số tài khoản</dt><dd class="acc">1903 6789 1230 15</dd></div>
+              <div><dt data-i18n="gift.accName">Chủ tài khoản</dt><dd>EMMA TRAN</dd></div>
+            </dl>
+            <button type="button" class="btn btn--outline btn--block" data-copy="19036789123015">
+              <i class="bi bi-copy" aria-hidden="true"></i><span data-i18n="gift.copy">Sao chép số tài khoản</span>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       12. FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="site-footer__bg" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy">
+    </div>
+    <div class="container container--narrow reveal">
+      <p class="site-footer__names script">Andy <span class="amp">&amp;</span> Emma</p>
+      <h2 class="site-footer__thanks" data-i18n="footer.thanks">Chân thành cảm ơn!</h2>
+      <p class="site-footer__quote" data-i18n="footer.quote">“Cảm ơn bạn đã là một phần yêu thương trong ngày trọng đại của chúng mình!”</p>
+      <p class="site-footer__copy" data-i18n="footer.copyright">© 2026 MINH DANG LE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       13. DOCK — menu dưới cho điện thoại / tablet
+       ====================================================================== -->
+  <nav class="dock" aria-label="Menu">
+    <a href="#hero" data-nav><i class="bi bi-house-heart"></i><span data-i18n="nav.home">Trang chủ</span></a>
+    <a href="#couple" data-nav><i class="bi bi-people"></i><span data-i18n="nav.couple">Cặp đôi</span></a>
+    <a href="#events" data-nav><i class="bi bi-calendar2-heart"></i><span data-i18n="nav.events">Sự kiện</span></a>
+    <a href="#gallery" data-nav><i class="bi bi-images"></i><span data-i18n="nav.gallery">Album</span></a>
+    <a href="#rsvp" data-nav><i class="bi bi-envelope-check"></i><span data-i18n="nav.rsvp">Xác nhận</span></a>
+    <a href="#gift" data-nav><i class="bi bi-gift"></i><span data-i18n="nav.gift">Mừng cưới</span></a>
+  </nav>
+
+  <!-- ======================================================================
+       14. LIGHTBOX & TOAST
+       ====================================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Gallery">
+    <button type="button" class="lightbox__btn lightbox__close" data-lb="close" data-i18n-aria="lightbox.close" aria-label="Đóng"><i class="bi bi-x-lg"></i></button>
+    <button type="button" class="lightbox__btn lightbox__prev" data-lb="prev" data-i18n-aria="lightbox.prev" aria-label="Ảnh trước"><i class="bi bi-chevron-left"></i></button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" id="lightboxImg" alt="">
+      <figcaption><span id="lightboxCaption"></span><span class="lightbox__counter" id="lightboxCounter"></span></figcaption>
+    </figure>
+    <button type="button" class="lightbox__btn lightbox__next" data-lb="next" data-i18n-aria="lightbox.next" aria-label="Ảnh sau"><i class="bi bi-chevron-right"></i></button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
